@@ -1,21 +1,29 @@
-// let abc = "hello"
-// {let abc = "world"}
-// if(true){
-//     function hello(){
-//         console.log("test")
-//     }
-// }
+// var i 与for循环
 
-
-// console.log(b);
-// var b = 111;
-
-var pi = 3.2;
-console.log(pi);
-
-if(true){
-    const pi = 1;
-    console.log(pi);
+for(var i = 0 ; i < 10 ; i++){
+    setTimeout(function(){
+        console.log(i);
+    })
 }
+//循环出10个 10，i是全局变量
+
+for(let i = 0 ; i < 10 ; i++){
+    setTimeout(function(){
+        console.log(i);
+    })
+}
+
+//解构赋值
+console.log("=======================");
+let {a, b} = {a:"hello", b:"world"};
+console.log(a);
+console.log(b);
+let { baz : foo } = { baz : 'ddd' };
+console.log(foo);
+
+let obj = {p:['hello', {y:'world'}]};
+console.log(obj.p[0]);
+console.log(obj.p[1].y);
+
 
 
