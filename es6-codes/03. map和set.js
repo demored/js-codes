@@ -13,4 +13,46 @@ console.log(key1.get(t))
 
 
 
+var myMap = new Map();
+myMap.set(0, "hello")
+myMap.set(1, "world")
+myMap.forEach(function(value, key){
+    console.log(key + "=" + value)
+})
+
+
+
+//set 对象操作
+let set1 = new Set();
+set1.add(1);
+set1.add(2);
+set1.add(3);
+set1.add(2);
+console.log(set1);
+
+
+//set对象转数组
+let mySet = new Set(["value1", "value2", "value3"]);
+console.log(mySet);
+console.log([...mySet]);
+console.log(mySet);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
