@@ -17,7 +17,18 @@ function foo1(...a){
 
 foo1(1,2,3,4);
 
-//箭头参数
-var f1 =
+//箭头参数/////////////
+var f1 = v => {
+    console.log(v);
+};
+f1(1);
+//要用括号括起来
+var f2 = (a,b) => ({a:a,b:b});
+console.log(f2(1,2));
+
+
+
+
+
 
 
