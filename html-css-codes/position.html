@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绝对定位</title>
+
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #container{
+            width:500px;
+            height: 500px;
+            background: #00FF00;
+            margin: 0 auto;
+        }
+        #foo{
+            width:100px;
+            height: 100px;
+            background: black;
+        }
+
+        #bar{
+            width:100px;
+            height: 100px;
+            background: red;
+            float: left;
+            margin-top: -100px;
+            margin-left: 100px;
+        }
+
+        #hello {
+            width:100px;
+            height:100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>可以使用position进行绝对定位，也可以使用float进行浮动也可以</div>
+    <div id="container">
+        <div id="foo"></div>
+        <div id="bar"></div>
+        <div id="hello"></div>
+    </div>
+</body>
+</html>
