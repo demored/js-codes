@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue模板语法</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <p>基础的模板语法</p>
+            <h1>{{site}}</h1>
+            <!-- 函数-->
+            <h1>{{fun1()}}</h1>
+
+            <!-- 输出html -->
+            <h2 v-html="message"></h2>
+
+            <!-- v-bind使用 -->
+            <div v-bind:class="class1">{{msg1}}</div>
+            <div v-bind:id="id1">{{id1}}</div>
+
+            <!-- v-on 使用 -->
+            <div v-on:click="doSomeThing">点击我</div>
+
+            <!-- v-bind缩写 -->
+            <div :data-type="data1">data1</div>
+
+            <!-- v-on缩写 -->
+            <div @click="fuck()">fuck you bitch</div>
+
+            <!-- 用户输入 -->
+            <div>{{message2}}</div>
+            <input v-model ="message2" type="text">
+
+        </div>
+
+        <div>
+            <p>条件语句</p>
+            <div v-if="a1">你妹的</div>
+            <div v-else-if="a2">你大爷的</div>
+            <div v-else>你哥的</div>
+        </div>
+
+
+        <div>
+            <p>循环语句</p>
+            <div v-for="site in sites">{{site}}</div>
+        </div>
+
+
+
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            site:"hello",
+            message:"<div>我是html元素</div>",
+            class1:"class1",
+            msg1:"我是msg1",
+            id1:"id1",
+            data1:"data_type1",
+            message2:"",
+            a1:false,
+            a2:true,
+            sites:[
+                "hello python",
+                "hello php",
+                "hello java"
+            ]
+        },
+        methods:{
+            fun1:function(){
+                return this.site
+            },
+            doSomeThing:function(){
+                alert("点击我触发");
+            },
+
+            fuck:function(){
+                alert("fuck you bitch");
+            }
+
+
+
+        }
+    })
+</script>
+</html>
