@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子div在父div中居中</title>
+</head>
+
+<style>
+    .father{
+        width: 1000px;
+        height: 600px;
+        position: relative;
+        background-color: red;
+    }
+    .son1 {
+        background-color: #fff;
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .son2{
+
+    }
+</style>
+
+<body>
+
+    <div class="father">
+        <div class="son1">son1</div>
+        <div class="son2">son2</div>
+    </div>
+</body>
+</html>

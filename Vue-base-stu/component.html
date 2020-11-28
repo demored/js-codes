@@ -17,10 +17,11 @@
 
     <div id="app3">
         <local></local>
+        <zyk></zyk>
     </div>
 
     <div id="app4">
-        <p-son message="父子组件传参"></p-son>
+        <p_son message="父子组件传参"></p_son>
     </div>
 
 </body>
@@ -40,13 +41,18 @@
     var app3 = new Vue({
         el:"#app3",
         components:{
-            local:{template: "<span>局部组件</span>"}
+            local:{template: "<span>局部组件</span>"},
+            zyk:{template:"<span>zyk业务</span>"}
         }
     })
 
     var app4 = new Vue({
         el:"#app4",
         components: {
+            p_son:{
+                props:["message"],
+                 template:"<span>{{message}}</span>"
+             }
 
         }
     })
