@@ -12,11 +12,9 @@
 1）模板基础语法
 2）v-text，v-html
 3）v-for
-4）@click，:id
-
+4）@click，v-bind:id/:id
+5) 计算属性
 -->
-
-
     <div id="app">
         <div>
             <p>基础的模板语法</p>
@@ -59,6 +57,33 @@
         </div>
 
     </div>
+
+    <div id="app2">
+        <p v-bind:id="ID">v-bind-id</p>
+        <p :class="[a,b]">v-bind-class</p>
+        <input type="text" v-model="msg" value="初始值">
+        <p>{{msg}}</p>
+    </div>
+
+    <!---双向绑定 -->
+    <div id="app3">
+        <input type="text" :value="msg" @input="fn($event)">
+        <p>{{msg}}</p>
+
+        <input type="text" v-model="msg2">
+        <p v-once>{{msg2}}</p>
+
+    </div>
+
+    <div id="app4">
+
+        <p>{{message}} --- {{reverse_message}}</p>
+
+        <input type="text" v-model="message">
+
+    </div>
+
+
 </body>
 
 <script>
@@ -93,9 +118,44 @@
                 alert("fuck you bitch");
             }
 
-
-
         }
     })
+
+    new Vue({
+        el:"#app2",
+        data:{
+            ID:"test-bind-id",
+            a:"test1",
+            b:"test2",
+            msg:"v-model初始值"
+        }
+    })
+
+    let vm = new Vue({
+        el: '#app3',
+        data: {
+            msg: "wjw",
+            msg2:"hello world"
+        },
+        methods: {
+            fn(e) {
+                this.msg = e.target.value
+            }
+        },
+    })
+
+    new Vue({
+        el:"#app4",
+        data:{
+            message:"hello"
+        },
+        computed:{
+            reverse_message:function(){
+                return this.message.split("").reverse().join("")
+            }
+        }
+
+    })
+
 </script>
 </html>

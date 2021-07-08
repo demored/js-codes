@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue语法</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!--
+
+    -->
+    <div id="app1">
+        <p>{{msg}}</p>
+    </div>
+
+</body>
+
+<script>
+
+    new Vue({
+        el:"#app1",
+        data:{
+            msg:"初始值"
+        },
+        //页面加载完后
+        mounted() {
+            this.getData();
+        },
+
+        methods:{
+            getData(){
+                axios.get("https://www.baidu.com/")
+                .then(res =>{
+                    this.msg = res
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
+        }
+    })
+
+</script>
+
+</html>
