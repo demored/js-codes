@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件使用</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!--
+        组件使用
+        1）全局组件
+    -->
+
+    <div id="app1">
+        <component-a></component-a>
+    </div>
+</body>
+
+<script>
+
+    //全局组件
+    Vue.component("component-a",{
+        template:`<div>
+        <p>I am component</p>
+        <p>{{count}}</p>
+</div>
+`
+        data:{
+            
+        }
+    })
+
+    new Vue({
+        el:"#app1"
+    })
+
+</script>
+
+</html>
