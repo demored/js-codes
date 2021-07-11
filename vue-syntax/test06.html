@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue组件使用</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--
+        1、全局组件使用
+        2、局部组件使用
+        3、组件嵌套
+        4、父子组件传参
+    -->
+
+    <!-- 全局组件-->
+    <div id="app1">
+        <child-a></child-a>
+    </div>
+
+    <!-- 全局组件和局部组件-->
+    <div id="app2">
+        <child-a></child-a>
+        <child-b></child-b>
+    </div>
+
+    <!-- 组件嵌套 -->
+    <div id="app3">
+        <child-c></child-c>
+    </div>
+
+    <div id="app4">
+        <child-d :msg="msg"></child-d>
+    </div>
+
+</body>
+
+<script>
+    //注册一个全局组件，必须在根实例上
+    Vue.component("child-a", {
+        template:`<div>我是全局组件</div>`
+    });
+
+   var app1 = new Vue({
+       el:"#app1"
+   })
+    var app2 = new Vue({
+        el:"#app2",
+        components:{
+            "child-b":{
+                template:`<p>我是局部组件</p>`
+            }
+        }
+    })
+
+    var app3 = new Vue({
+        el:"#app3",
+        components:{
+            "child-c":{
+                template:`
+<div>
+<p>我是child-c</p>
+<child-a></child-a>
+</div>
+`
+            }
+        }
+    })
+
+    Vue.component("child-d",{
+        template:`<div>我是child-d {{msg}}</div>`,
+        props: ["msg"]
+    })
+
+    var app4 = new  Vue({
+        el:"#app4",
+        data:{
+            msg:"我是app4的根组件"
+        }
+    })
+
+    
+</script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue路由使用</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+
+    <!-- 静态路由-->
+    <div id="app1">
+        <router-link to="/home">主页</router-link>
+        <router-link to="/user">用户</router-link>
+        <router-view></router-view>
+    </div>
+
+    <!-- 动态路由 -->
+    <div id="app2">
+        <router-link to="/goods/2">商品</router-link>
+        <router-link to="/detail/3">详情</router-link>
+        <!-- 变量方式-->
+        <router-link :to="cases">案例</router-link>
+
+        <!-- name 别名方式 -->
+        <router-link :to="{name:'ccc'}">别名传参</router-link>
+
+        <!-- name 别名方式多参数 -->
+        <router-link :to="{name:'ddd', params:{id:1,age:20,name:'张三'}}">别名多参数</router-link>
+
+        <!-- 强制跳转 -->
+        <router-link :to="{name:'eee'}">强制跳转</router-link>
+
+        <button @click="fnBtn">按钮控制路由</button>
+
+        <router-view></router-view>
+
+    </div>
+
+</body>
+
+
+<script>
+    let home = {template:`<div>我是主页</div>`}
+    let user = {template:`<div>我是用户</div>`}
+    let RouterStatic = new VueRouter({
+        routes:[
+            {
+                path:'/home',
+                component:home
+            },
+            {
+                path: '/user',
+                component: user
+            }
+        ]
+    })
+
+    let app1 = new Vue({
+        el:"#app1",
+        router:RouterStatic
+    })
+
+
+    let RouterDynamic = new VueRouter({
+        routes: [
+            {
+                path:"/goods/:id",
+                component:{
+                    template:`<div> 商品ID： {{ $route.params.id }}</div>`
+                }
+            },
+            {
+                path:"/detail/:id",
+                component:{
+                    template:`<div> 详情ID： {{ $route.params.id }}</div>`
+                }
+            },
+            {
+                path:"/case",
+                component: {
+                    template: `<div>我是案例</div>`
+                }
+            },
+            {
+                name:"ccc",
+                path:"/name",
+                component: {
+                    template: `<div>别名传参</div>`
+                }
+            },
+            {
+                name:"ddd",
+                path:"/id/:id/age/:age/name/:name",
+                component: {
+                    template: `<div><span>ddd {{$route.params.id}} - {{$route.params.age}} - {{$route.params.name}}</span></div>`
+                }
+            },
+            {
+                name:"eee",
+                path:"/eee",
+                redirect:'/name',
+                component: {
+                    template: `<div>我原本是eee</div>`
+                }
+            }
+        ]
+    })
+
+    new Vue({
+        el:"#app2",
+        data:{
+            cases:"/case"
+        },
+        methods:{
+            fnBtn(){
+                this.$router.push({
+                    name:"ccc"
+                })
+            }
+        },
+        router:RouterDynamic
+    })
+
+
+
+
+</script>
+
+</html>
