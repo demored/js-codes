@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header">Hero List</h2>
-    <a class="btn btn-success" href="add.html">新增</a>
+    <a class="btn btn-success" href="/add">新增</a>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -19,8 +19,8 @@
           <td>{{item.age}}</td>
           <td>{{item.job}}</td>
           <td>
-            <a href="edit.html">编辑</a> &nbsp;&nbsp;
-            <a href="javascript:window.confirm('Are you sure?')">删除</a>
+            <router-link :to="{path:'/edit/'+item.id }">编辑</router-link>
+            <a href="javascript:;" @click="delItem(item.id)">删除</a>
           </td>
         </tr>
         </tbody>
@@ -51,6 +51,15 @@ export default {
             (error) => {
               console.log(error);
             });
+      },
+      delItem(id){
+        if(confirm('确定要删除吗？')){
+          axios.delete("/api/index.php?act=del").then(res =>{
+            console.log(res);
+          }).catch(err => {
+            console.log(err);
+          })
+        }
       }
     },
   mounted() {
